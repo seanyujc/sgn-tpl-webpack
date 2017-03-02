@@ -5,11 +5,14 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist && mkdir dist",
+    "cpdll":"ncp ./dll/dll.angular.js ./dist/dll.angular.js && ncp ./dll/dll.angular.js.map ./dist/dll.angular.js.map",
     "dev": "cross-env NODE_ENV=DEV webpack-dev-server --progress",
     "prebuild": "npm run clean",
     "build": "cross-env NODE_ENV=PRO webpack -p --colors",
-    "postbuild": "ncp ./dll/dll.angular.js ./dist/dll.angular.js && ncp ./dll/dll.angular.js.map ./dist/dll.angular.js.map ",
+    "postbuild": "npm run cpdll",
     "build:dll": "webpack -p --config=webpack.dll.js",
+    "preinstall":"npm run clean",
+    "postinstall":"npm run build:dll && npm run cpdll",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

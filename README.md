@@ -2,6 +2,6 @@
 
 ###uage
 ```bash
-npm i
 npm i cross-env ncp rimraf -g
+npm i
 ```
