@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width">
+    <script type="text/javascript">
+    (function (window) {
+        var viewport = window.document.querySelector("meta[name=viewport]");
+        var _devicePixelRatio = window.devicePixelRatio;
+        var scale = screen.width / 640;
+        var isIPhone = window.navigator.userAgent.match(/iPhone/gi);
+        var isAndroid = window.navigator.userAgent.match(/Android/gi);
+        if (isIPhone) {
+            viewport.setAttribute('content', 'width=device-width, initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=0');
+        } else {
+            viewport.setAttribute('content', 'width=device-width, initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=0');
+        }
+        window.document.documentElement.firstElementChild.appendChild(viewport);
+    })(window);
+    </script>
+    <script src="./dll.angular.js"></script>
+</head>
+
+<body>
+    <div class="main-container " ui-view></div>
+</body>
+
+</html>

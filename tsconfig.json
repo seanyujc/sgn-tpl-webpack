@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es5",
+        "outDir": "./dist",
+        "typeRoots": [
+            "node_modules/@types/"
+        ],
+        "types": [
+            "node",
+            "angular",
+            "angular-ui-router",
+            "angular-ui-bootstrap",
+            "webpack-env",
+            "oclazyload"
+        ],
+        "sourceMap": true
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
