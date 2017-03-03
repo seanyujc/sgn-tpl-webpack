@@ -5,14 +5,14 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist && mkdir dist",
-    "cpdll":"ncp ./dll/dll.angular.js ./dist/dll.angular.js && ncp ./dll/dll.angular.js.map ./dist/dll.angular.js.map",
+    "cpdll": "ncp ./dll/dll.angular.js ./dist/dll.angular.js && ncp ./dll/dll.angular.js.map ./dist/dll.angular.js.map",
     "dev": "cross-env NODE_ENV=DEV webpack-dev-server --progress",
     "prebuild": "npm run clean",
     "build": "cross-env NODE_ENV=PRO webpack -p --colors",
     "postbuild": "npm run cpdll",
     "build:dll": "webpack -p --config=webpack.dll.js",
-    "preinstall":"npm run clean",
-    "postinstall":"npm run build:dll && npm run cpdll",
+    "preinstall": "npm run clean",
+    "postinstall": "npm run build:dll && npm run cpdll",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -32,6 +32,7 @@
     "@types/angular": "^1.6.7",
     "@types/angular-ui-bootstrap": "^0.13.40",
     "@types/angular-ui-router": "^1.1.36",
+    "@types/lodash": "^4.14.54",
     "@types/node": "^7.0.5",
     "@types/oclazyload": "0.0.31",
     "@types/webpack-env": "^1.13.0",

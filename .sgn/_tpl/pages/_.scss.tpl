@@ -1,4 +1,4 @@
-.module-box.home-box{
+.module-box.<%= moduleName%>-box{
     h1{
         color: green;
     }
