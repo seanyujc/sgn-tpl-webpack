@@ -8,6 +8,7 @@ export let app = module('app', [
     require('angular-ui-router'),
     require('angular-ui-bootstrap'),
     require("oclazyload"),
+    require("ng-bases"),
     core.name,
     routes.name
 ]);
