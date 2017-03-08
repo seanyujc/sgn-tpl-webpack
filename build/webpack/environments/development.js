@@ -4,13 +4,15 @@ var WebpackBrowserPlugin = require('webpack-browser-plugin');
 var webpack = require('webpack')
 
 var port = 8001;
+var NODE_ENV = process.env.NODE_ENV || "PRO"
+var publicPath = '/'
 
 module.exports = function (_path) {
   return {
     context: _path,
     cache: false,
     output: {
-      publicPath: "/"
+      publicPath
     },
     externals: {
       // angular: 'angular',
@@ -35,6 +37,10 @@ module.exports = function (_path) {
       // compress: true
     },
     plugins: [
+      new webpack.DefinePlugin({
+        'NODE_ENV': JSON.stringify(NODE_ENV),
+        'PUBLIC_PATH': JSON.stringify(publicPath)
+      }),
       new WebpackBrowserPlugin({
         port,
         url: 'http://localhost'

@@ -1,6 +1,13 @@
-const sites: ngb.Sites = {}
-const dev: ngb.Site = {local: "dh5.duileme.cn", remote: "dapi.duileme.cn", appID: "wx165579c7fca21c14"}
-const test: ngb.Site = {local: "dh5.duileme.cn", remote: "dapi.duileme.cn", appID: "wx165579c7fca21c14"}
-const pro: ngb.Site = {local: "dh5.duileme.cn", remote: "dapi.duileme.cn", appID: "wx165579c7fca21c14"}
+import ngb = require("ng-bases");
 
-sites[ngb.Env.Dev] = dev;
+const apiConfig = function(apiConfigProvider: ngb.IApiConfigProvider){
+    apiConfigProvider.hosts ={
+        "apiUser": {dir: '/user/app'}
+    }
+    apiConfigProvider.get = {
+        "fetchUserInfo": "apiUser:/user/info", //?openId
+    }
+}
+apiConfig.$inject = ['apiConfigProvider']
+
+export default apiConfig;

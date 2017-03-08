@@ -55,9 +55,6 @@ module.exports = function (_path) {
                 context: _path,
                 manifest: require(_path + "/dll/angular-manifest.json"),
             }),
-            new webpack.DefinePlugin({
-                'NODE_ENV': JSON.stringify(NODE_ENV)
-            }),
             new ExtractTextPlugin('styles.css'),
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'commons',

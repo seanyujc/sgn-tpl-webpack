@@ -18,9 +18,7 @@
         ],
         "sourceMap": true
     },
-    "files":[
-        "node_modules/ng-bases/dts/index.d.ts"
-    ],
+
     "include": [
         "src/**/*"
     ],
