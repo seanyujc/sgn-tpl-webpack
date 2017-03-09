@@ -13,13 +13,12 @@ module.exports = function (_path) {
             app: _path + '/src/app/index.bootstrap'
         },
         output: {
-            filename: '[name].js',
+            filename: '[name]_[hash].js',
             path: path.resolve(_path, 'dist')
         },
         resolve: {
             extensions: ['.js', '.ts', '.tsx'],
-            modules: [path.resolve(_path, 'node_modules')],
-
+            modules: [path.resolve(_path, 'node_modules')]
         },
         module: {
             rules: [
@@ -33,13 +32,23 @@ module.exports = function (_path) {
                         }]
                 },
                 {
+                    test: /\.(woff2|woff|ttf|eot|svg)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                    exclude: /node_modules/,
+                    use: [
+                        {
+                            loader: 'url-loader?name=assets/fonts/[name]_[hash].[ext]&limit=5000'
+                        }
+                    ]
+                },
+                {
                     test: /\.scss$/,
                     use: ExtractTextPlugin.extract({
-                        use: [{
-                            loader: "css-loader" // translates CSS into CommonJS 
-                        }, {
-                            loader: "sass-loader" // compiles Sass to CSS 
-                        }]
+                        use: [
+                            {
+                                loader: "css-loader" // translates CSS into CommonJS 
+                            }, {
+                                loader: "sass-loader" // compiles Sass to CSS 
+                            }]
                     })
                 },
                 {
@@ -55,10 +64,14 @@ module.exports = function (_path) {
                 context: _path,
                 manifest: require(_path + "/dll/angular-manifest.json"),
             }),
+            new webpack.DllReferencePlugin({
+                context: _path,
+                manifest: require(_path + "/dll/plugins-manifest.json"),
+            }),
             new ExtractTextPlugin('styles.css'),
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'commons',
-                filename: 'commons.js',
+                filename: 'commons_[hash].js',
                 minChunks: 2,
             }),
             new HtmlWebpackPlugin({

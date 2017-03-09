@@ -2,7 +2,8 @@ var path = require('path')
 var webpack = require('webpack')
 module.exports = {
     entry: {
-        angular: ['angular', 'angular-ui-router', 'angular-ui-bootstrap', 'oclazyload']
+        angular: ['angular'],
+        plugins: ['angular-ui-router', 'angular-ui-bootstrap', 'oclazyload', 'ng-bases']
     },
     output: {
         path: 'dll/',
@@ -18,6 +19,10 @@ module.exports = {
         new webpack.DllPlugin({
             path: __dirname + '/dll/[name]-manifest.json',
             name: '[name]_lib'
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'angular',
+            minChunks: 2,
         })
     ],
     module: {

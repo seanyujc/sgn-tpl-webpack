@@ -5,23 +5,14 @@ var webpack = require('webpack')
 
 var port = 8001;
 var NODE_ENV = process.env.NODE_ENV || "PRO"
-var publicPath = '/'
+var publicPath = process.env.PUBLIC_PATH || '/promotor/'
 
 module.exports = function (_path) {
-  return {
+  var webpackConfig = {
     context: _path,
     cache: false,
     output: {
       publicPath
-    },
-    externals: {
-      // angular: 'angular',
-      // "angular-ui-router":"angular-ui-router",
-      // "angular-ui-bootstrap":"angular-ui-bootstrap",
-      // "oclazyload":"oclazyload"
-    },
-    performance: {
-      // hints: "error"
     },
     devtool: 'inline-source-map',
     devServer: {
@@ -40,11 +31,17 @@ module.exports = function (_path) {
       new webpack.DefinePlugin({
         'NODE_ENV': JSON.stringify(NODE_ENV),
         'PUBLIC_PATH': JSON.stringify(publicPath)
-      }),
-      new WebpackBrowserPlugin({
-        port,
-        url: 'http://localhost'
       })
     ]
   };
+
+  if (publicPath === '/') {
+    webpackConfig.plugins.push(
+      new WebpackBrowserPlugin({
+        port,
+        url: 'http://localhost'
+      }))
+  }
+
+  return webpackConfig;
 };

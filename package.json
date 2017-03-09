@@ -4,15 +4,24 @@
   "description": "this a angualr framework template",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf dist && mkdir dist",
-    "cpdll": "ncp ./dll/dll.angular.js ./dist/dll.angular.js && ncp ./dll/dll.angular.js.map ./dist/dll.angular.js.map",
-    "dev": "cross-env NODE_ENV=DEV webpack-dev-server --progress",
+    "clean": "rimraf dist && mkdir dist && mkdir dist/assets",
+    "cpdll": "ncp ./dll/dll.angular.js ./dist/dll.angular.js && ncp ./dll/dll.angular.js.map ./dist/dll.angular.js.map && ncp ./dll/dll.plugins.js ./dist/dll.plugins.js && ncp ./dll/dll.plugins.js.map ./dist/dll.plugins.js.map",
+    "cpassets": "ncp ./src/assets/images ./dist/assets/images",
+    "dev": "cross-env NODE_ENV=DEV cross-env PUBLIC_PATH=/  webpack-dev-server --progress",
     "prebuild": "npm run clean",
     "build": "cross-env NODE_ENV=PRO webpack -p --colors",
-    "postbuild": "npm run cpdll",
+    "postbuild": "npm run cpdll && npm run cpassets",
+    "prebuild:test": "npm run prebuild",
+    "build:test": "cross-env NODE_ENV=TEST webpack -p --colors",
+    "postbuild:test": "npm run postbuild",
+    "prebuild:dev": "npm run prebuild",
+    "build:dev": "cross-env NODE_ENV=DEV webpack -p --colors",
+    "postbuild:dev": "npm run postbuild",
+    "prebuild:dll": "rimraf dll",
     "build:dll": "webpack -p --config=webpack.dll.js",
+    "postbuild:dll": "npm run cpdll",
     "preinstall": "npm run clean",
-    "postinstall": "npm run build:dll && npm run cpdll",
+    "postinstall": "npm run build:dll && npm run cpassets",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -26,7 +35,7 @@
     "angular-ui-bootstrap": "^2.5.0",
     "angular-ui-router": "^0.4.2",
     "bootstrap-sass": "^3.3.7",
-    "ng-bases": "^1.0.20",
+    "ng-bases": "^1.1.0",
     "oclazyload": "^1.1.0"
   },
   "devDependencies": {

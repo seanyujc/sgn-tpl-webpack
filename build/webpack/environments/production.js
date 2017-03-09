@@ -19,19 +19,7 @@ module.exports = function (_path) {
       new webpack.DefinePlugin({
         'NODE_ENV': JSON.stringify(NODE_ENV),
         'PUBLIC_PATH': JSON.stringify(publicPath)
-      }),
-      // new webpack.DllReferencePlugin({
-      //           context: _path,
-      //           manifest: require(_path + "/dll/angular-manifest.json"),
-      //       }),
-      // new CopyWebpackPlugin([
-      //   {from: 'dll/dll.angular.js'},
-      //   {from: "dll/dll.angular.js.map"}
-      // ]),
-      // new HtmlWebpackIncludeAssetsPlugin({
-      //   assets: ['dll/dll.angualr.js'],
-      //   append: false
-      // })
+      })
     ]
   };
 };
