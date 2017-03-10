@@ -10,9 +10,9 @@ interface GlobalEnvironment {
 
 const siteConfig = function (serverConfigProvider: ngb.IServerConfigProvider) {
 
-    const dev: ngb.Site = { local: "dh5.duileme.cn", remote: "dapi.duileme.cn", appID: "wx165579c7fca21c14" }
-    const test: ngb.Site = {local: "th5.duileme.cn", remote: "tapi.duileme.cn", appID: "wxa4a3657d35a0f7b4"}
-    const pro: ngb.Site = {local: "h5.duileme.cn", remote: "api.duileme.cn", appID: "wxf7efaadf0d8ff9fb"}
+    const dev: ngb.Site = { local: "dh5.duileme.cn", remote: "dapi.duileme.cn", appID: "xxx" }
+    const test: ngb.Site = {local: "th5.duileme.cn", remote: "tapi.duileme.cn", appID: "yyy"}
+    const pro: ngb.Site = {local: "h5.duileme.cn", remote: "api.duileme.cn", appID: "zzz"}
 
     let env = ngb.Env.DEV;
     if(NODE_ENV === 'TEST'){
