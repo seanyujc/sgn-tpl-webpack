@@ -2,8 +2,8 @@ var path = require('path')
 var webpack = require('webpack')
 module.exports = {
     entry: {
-        angular: ['angular'],
-        plugins: ['angular-ui-router', 'angular-ui-bootstrap', 'oclazyload', 'ng-bases']
+        angular: ['angular', 'angular-i18n/angular-locale_zh-cn', 'angular-sanitize'],
+        plugins: ['angular-animate', 'angular-ui-router', 'angular-ui-bootstrap', 'angular-iscroll', 'oclazyload', 'ng-bases']
     },
     output: {
         path: 'dll/',

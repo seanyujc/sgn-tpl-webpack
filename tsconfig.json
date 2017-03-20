@@ -11,6 +11,7 @@
         "types": [
             "node",
             "angular",
+            "angular-animate",
             "angular-ui-router",
             "angular-ui-bootstrap",
             "webpack-env",
@@ -18,7 +19,9 @@
         ],
         "sourceMap": true
     },
-
+    "files": [
+        "node_modules/ng-bases/dts/wx/index.d.ts"
+    ],
     "include": [
         "src/**/*"
     ],

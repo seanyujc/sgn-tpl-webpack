@@ -5,7 +5,7 @@ var webpack = require('webpack')
 
 var port = 8001;
 var NODE_ENV = process.env.NODE_ENV || "PRO"
-var publicPath = process.env.PUBLIC_PATH || '/promotor/'
+var publicPath = process.env.PUBLIC_PATH || '/app/'
 
 module.exports = function (_path) {
   var webpackConfig = {
@@ -14,15 +14,16 @@ module.exports = function (_path) {
     output: {
       publicPath
     },
-    devtool: 'inline-source-map',
+    devtool: 'source-map',
     devServer: {
       contentBase: path.join(_path, "dist"),
       // historyApiFallback: true,
       // noInfo: false,
       // stats: 'minimal',
+      headers: { "Access-Control-Allow-Origin": "*" },
       publicPath: '/',
-      // hot: true,
-      // host: '0.0.0.0',
+      hot: false,
+      host: '0.0.0.0',
       // lazy: true,
       port
       // compress: true

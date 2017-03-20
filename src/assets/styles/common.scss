@@ -1,3 +1,277 @@
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "~bootstrap-sass/assets/stylesheets/_bootstrap-sprockets";
+$screen-sm: 640px !default;
+$modal-md: 620px !default;
 @import "~bootstrap-sass/assets/stylesheets/_bootstrap";
+@import "./animate";
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+address,
+cite,
+code,
+del,
+em,
+img,
+strong,
+sub,
+sup,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline
+}
+
+li {
+    list-style: none
+}
+
+div,
+th,
+td {
+    word-wrap: break-word;
+    word-break: break-all
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    width: 640px;
+    margin: 0 auto;
+    background: #f1f5f8;
+    font-family: "微软雅黑";
+    line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    line-height: 1.5;
+}
+
+h1 {
+    font-size: 16px;
+    font-weight: 400
+}
+
+h2,
+h3 {
+    font-size: 14px;
+    font-weight: 400
+}
+
+h4,
+h5,
+h6 {
+    font-size: 12px;
+    font-weight: 400
+}
+
+@media (min-width: $screen-sm-min) {
+    // Automatically set modal's width for larger viewports
+    .modal-dialog {
+        margin: 10px auto;
+    }
+}
+
+.modal {
+    &.msg-modal {
+        .modal-dialog {
+            margin: 0 10px 10px;
+            .modal-content {
+                border-radius: 0 0 8px 8px;
+            }
+        }
+    }
+    &.upward-modal {
+        &.fade {
+            .modal-dialog {
+                transform: translate(0, 25%);
+                position: fixed;
+                bottom: 0;
+                left: 50%;
+                margin-left: -310px;
+                width: 620px;
+                box-sizing: border-box;
+            }
+        }
+        &.in {
+            .modal-dialog {
+                -webkit-transform: translate(0, 0);
+                transform: translate(0, 0);
+            }
+        }
+    }
+    &.full-scan-modal {
+        &.in {
+            .modal-dialog {
+                height: 100%;
+                width: 100%;
+                .modal-content {
+                    box-shadow: none;
+                    border: 0;
+                    height: 0;
+                }
+            }
+        }
+    }
+    &.confirm-modal {
+        &.fade {
+            opacity: inherit;
+            &.ng-enter {
+                animation: bounceIn .75s;
+            }
+            &.ng-leave {
+                animation: zoomOut .15s;
+            }
+            .modal-dialog {
+                width: 580px;
+                transform: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                margin-top: -25%;
+                margin-left: -290px;
+                box-sizing: border-box;
+                transition: all 0 ease 0;
+                .modal-content {
+                    font-size: 28px;
+                    padding: 20px;
+                    p {
+                        margin: 30px 0;
+                    }
+                }
+            }
+        }
+        &.in {
+            opacity: inherit;
+            .modal-dialog {
+                transform: none;
+            }
+        }
+    }
+}
+
+.modal-backdrop {
+    &.confirm-backdrop {
+        &.fade {
+            transition: opacity 0.15s linear;
+        }
+    }
+}
+
+body {
+    height: 100%;
+}
+
+.main-container {
+    position: relative;
+    height: 100%;
+}
+
+.main-container>[ui-view] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.module-box {
+    position: relative;
+    height: 100%;
+}
+
+.main-container>[ui-view].ng-enter {
+    animation: fadeIn .3s;
+}
+
+.main-container>[ui-view].ng-leave {
+    animation: fadeOut .3s;
+}
+
+[ui-view="list"] {
+    position: absolute;
+}
+
+// 分享引导
+.share-hand,
+.browser-hand {
+    height: 100%;
+    .top {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 50%;
+        background: url(./images/share_top.png) no-repeat;
+    }
+    .bottom {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 50%;
+        background: url(./images/share_bottom.png) no-repeat bottom;
+    }
+}
+
+.btn-lg {
+    font-size: 28px;
+}

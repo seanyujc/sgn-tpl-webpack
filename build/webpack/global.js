@@ -41,14 +41,25 @@ module.exports = function (_path) {
                     ]
                 },
                 {
+                    test: /\.(png|jpg)$/,
+                    use: [
+                        'url-loader?name=assets/images/[name]_[hash].[ext]&limit=5000'
+                    ]
+                },
+                {
                     test: /\.scss$/,
+                    // use: [
+                    //     "style-loader",
+                    //     "css-loader",
+                    //     "postcss-loader",
+                    //     "sass-loader"
+                    // ]
                     use: ExtractTextPlugin.extract({
                         use: [
-                            {
-                                loader: "css-loader" // translates CSS into CommonJS 
-                            }, {
-                                loader: "sass-loader" // compiles Sass to CSS 
-                            }]
+                            "css-loader",
+                            "postcss-loader",
+                            "sass-loader"
+                        ]
                     })
                 },
                 {
