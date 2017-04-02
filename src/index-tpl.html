@@ -20,11 +20,19 @@
         window.document.documentElement.firstElementChild.appendChild(viewport);
     })(window);
     </script>
-    <script src="./dll.angular.js"></script>
+    <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <% for(var o of htmlWebpackPlugin.options.dlls ){ %><script src="./<%= o %>.js"></script>
+    <% } %>
 </head>
 
-<body>
-    <div class="main-container " ui-view></div>
+<body ng-controller="AppMainController as app" ng-class="{
+      'iscroll-on': app.iScrollState.useIScroll,
+      'iscroll-off': !app.iScrollState.useIScroll
+      }">
+      <div class="loading" style="display: inline-block; height: 30px; line-height: 30px; position: fixed; left:0; right:0;  top: 50%;  margin-top: -15px;  text-align: center;">loading...</div>
+    <div class="main-container ">
+      <div ui-view></div>
+    </div>
 </body>
 
 </html>

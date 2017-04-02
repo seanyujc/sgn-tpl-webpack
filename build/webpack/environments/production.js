@@ -12,8 +12,7 @@ module.exports = function (_path) {
     cache: true,
     devtool: 'cheap-module-source-map',
     output: {
-      publicPath,
-      filename: '[name].[chunkhash].js'
+      publicPath
     },
     plugins: [
       new webpack.DefinePlugin({
