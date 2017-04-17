@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <meta name="viewport" content="width=device-width">
+    <% for(let o of htmlWebpackPlugin.options.styles){ %>
+    <link rel="stylesheet" href="./<%= o %>.css">
+    <% } %>
     <script type="text/javascript">
     (function (window) {
         var viewport = window.document.querySelector("meta[name=viewport]");
@@ -22,6 +25,11 @@
     </script>
     <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
     <% for(var o of htmlWebpackPlugin.options.dlls ){ %><script src="./<%= o %>.js"></script>
+    <% } %>
+    <% if(NODE_ENV==='DEV') {%>
+      <% for(let o of htmlWebpackPlugin.options.dev ){ %>
+      <script src="./<%= o %>.js"></script>
+      <% } %>
     <% } %>
 </head>
 

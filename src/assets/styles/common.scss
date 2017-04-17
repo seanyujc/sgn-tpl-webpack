@@ -1,11 +1,4 @@
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-$screen-sm: 640px !default;
-$modal-md: 620px !default;
-@import "~bootstrap-sass/assets/stylesheets/_bootstrap-sprockets";
-$screen-sm: 640px !default;
-$modal-md: 620px !default;
-@import "~bootstrap-sass/assets/stylesheets/_bootstrap";
-@import "./animate";
+@import "./animate.css";
 html,
 body,
 div,
@@ -92,7 +85,7 @@ body {
     width: 640px;
     margin: 0 auto;
     background: #f1f5f8;
-    font-family: "微软雅黑";
+    font-family: Arial, Helvetica, "MicrosoftYaHei", sans-serif;
     line-height: 1.5;
 }
 
@@ -129,12 +122,6 @@ h6 {
     font-weight: 400
 }
 
-@media (min-width: $screen-sm-min) {
-    // Automatically set modal's width for larger viewports
-    .modal-dialog {
-        margin: 10px auto;
-    }
-}
 
 .modal {
     &.msg-modal {
