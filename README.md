@@ -2,6 +2,15 @@
 
 ###uage
 ```bash
-npm i cross-env ncp rimraf -g
-npm i
+npm i cross-env ncp rimraf mkdirp -g && npm i
+```
+To develop
+```bash
+npm run dev
+```
+To build
+```
+npm run build:dev
+npm run build:test
+npm run build
 ```

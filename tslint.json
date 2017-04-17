@@ -16,7 +16,7 @@
     "no-var-requires": false,
     "semicolon": [true, "always"],
     "max-line-length": [true, 138],
-    "quotemark": [true, "single", "avoid-escape"]
+    "quotemark": [true, "double", "avoid-escape"]
   },
   "jsRules": {
     /*
