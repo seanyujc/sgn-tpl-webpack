@@ -20,7 +20,7 @@
     "prebuild:dll": "rimraf dll",
     "build:dll": "webpack -p --config=webpack.dll.js",
     "postbuild:dll": "npm run cpdll",
-    "preinstall": "npm run clean",
+    "preinstall": "npm i rimraf mkdirp -g && npm run clean",
     "postinstall": "npm run build:dll && npm run cpassets",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -36,6 +36,7 @@
     "angular-i18n": "^1.6.3",
     "angular-iscroll": "^3.4.0",
     "angular-sanitize": "^1.6.3",
+    "angular-touch": "^1.6.4",
     "angular-ui-bootstrap": "^2.5.0",
     "angular-ui-router": "^0.4.2",
     "bootstrap-sass": "^3.3.7",
