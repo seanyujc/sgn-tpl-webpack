@@ -1,6 +1,6 @@
 # A webpack + angular setup with route, lazyloa, sass for sgn development tools
 
-### uage
+### Usage
 ```bash
 npm i cross-env ncp rimraf mkdirp -g && npm i
 ```
