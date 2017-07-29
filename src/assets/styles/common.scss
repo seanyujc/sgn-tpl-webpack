@@ -1,4 +1,7 @@
-@import "./animate.css";
+@import "./animate.css"; // 变量
+@import "~angular-iscroll/dist/lib/scss/_iscroll.scss";
+$fontNormalColor: #4d5d6f;
+$fontLightColor: #a6aeb7;
 html,
 body,
 div,
@@ -62,12 +65,19 @@ video {
     padding: 0;
     border: 0;
     outline: 0;
-    font-size: 100%;
-    vertical-align: baseline
 }
 
 li {
-    list-style: none
+    list-style: none;
+}
+
+a,
+span,
+i,
+em {
+    font-style: normal;
+    text-decoration: none;
+    display: inline-block;
 }
 
 div,
@@ -82,11 +92,23 @@ html {
 }
 
 body {
-    width: 640px;
+    height: 100%;
+    width: 7.50rem;
     margin: 0 auto;
-    background: #f1f5f8;
+    height: 100%;
+    background-color: #f5faff;
     font-family: Arial, Helvetica, "MicrosoftYaHei", sans-serif;
     line-height: 1.5;
+    font-size: .22rem;
+    color: $fontNormalColor;
+}
+
+a:active,
+a:visited,
+a:focus,
+a:hover {
+    text-decoration: none;
+    outline: none;
 }
 
 h1,
@@ -105,49 +127,224 @@ h6,
 }
 
 h1 {
-    font-size: 16px;
+    font-size: .34rem;
     font-weight: 400
 }
 
 h2,
 h3 {
-    font-size: 14px;
+    font-size: .28rem;
     font-weight: 400
 }
 
 h4,
 h5,
 h6 {
-    font-size: 12px;
+    font-size: .24rem;
     font-weight: 400
 }
 
+p {
+    font-size: .24rem;
+    color: #a6aeb7;
+}
 
+label{
+    display: inline-block;
+}
+
+input:focus,
+input[type="checkbox"]:focus,
+input[type="radio"]:focus,
+input[type="button"]:focus {
+    outline: none;
+}
+
+input::-webkit-input-placeholder {
+    color: #a6aeb7;
+}
+
+input::-moz-placeholder {
+    color: #a6aeb7;
+}
+
+input:-ms-input-placeholder {
+    color: #a6aeb7;
+}
+// bootstrap样式自定义
 .modal {
-    &.msg-modal {
-        .modal-dialog {
-            margin: 0 10px 10px;
-            .modal-content {
-                border-radius: 0 0 8px 8px;
+    .modal-dialog {
+        width: 6.10rem;
+        left: 50%;
+        margin-left: -3.05rem;
+        .modal-content {
+            section {
+                padding: 0 .3rem;
+                h1 {
+                    margin: .6rem 0;
+                    text-align: center;
+                }
+                p {
+                    margin: .6rem 0;
+                    font-size: .26rem;
+                }
+            }
+            footer {
+                height: 1rem;
+                line-height: 1rem;
+                border-top: .01rem solid #edeef0;
+                button {
+                    border: 0;
+                    border-radius: 0;
+                    &:active {
+                        box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+                    }
+                    &.btn-success {
+                        color: #7d92fa;
+                        width: 100%;
+                        height: 100%;
+                        float: left;
+                        &:hover {
+                            background: none;
+                            border: 0;
+                        }
+                    }
+                    &.btn-cancel {
+                        color: #a6aeb7;
+                    }
+                }
             }
         }
     }
+    &.msg-modal {
+        .modal-dialog {
+            margin: 0 .10rem .10rem;
+            .modal-content {
+                border-radius: 0 0 .08rem .08rem;
+            }
+        }
+    }
+    &.msg-modal-white{
+        .modal-dialog{
+            width: 6.10rem;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-left: -3.05rem;
+            box-sizing: border-box;
+            transition: all 0 ease 0;
+            .modal-content {
+                border-radius: 0.1rem;
+            }
+        }
+    }
+    &.msg-mid-modal {
+        &.fade {
+            &.ng-enter {
+                animation: bounceIn .75s;
+            }
+            &.ng-leave {
+                animation: zoomOut .35s;
+            }
+            .modal-dialog {
+                width: 6.10rem;
+                top: 50%;
+                transform: translateY(-50%);
+                margin-left: -3.05rem;
+                box-sizing: border-box;
+                transition: all 0 ease 0;
+                .modal-content {
+                    padding: 0;
+                    text-align: center;
+                    h3{
+                        font-size: 0.34rem;
+                        color: $fontNormalColor;
+                        margin-top:0.6rem;
+                    }
+                    p{
+                        font-size: 0.26rem;
+                    }
+                   button{
+                        font-size:0.3rem;
+                    }
+                    
+                }
+            }
+        }
+        &.in {
+            .modal-dialog {}
+        }
+    }
     &.upward-modal {
+        .modal-dialog {
+            margin: 0;
+            .modal-content {
+                background-color: inherit;
+                box-shadow: none;
+                border: 0;
+            }
+        }
         &.fade {
             .modal-dialog {
+                width: 7.50rem;
                 transform: translate(0, 25%);
                 position: fixed;
                 bottom: 0;
                 left: 50%;
-                margin-left: -310px;
-                width: 620px;
+                margin-left: -3.75rem;
                 box-sizing: border-box;
+                max-height: 100%;
+                overflow: auto;
             }
         }
         &.in {
             .modal-dialog {
                 -webkit-transform: translate(0, 0);
                 transform: translate(0, 0);
+            }
+        }
+    }
+    &.upward-modal {
+        &.fileupload {
+            .modal-dialog {
+                width: 7.1rem;
+                margin-left: -3.55rem;
+                .modal-content {
+                    background: transparent;
+                    padding-bottom: .2rem;
+                    section {
+                        padding-top: .1rem;
+                        padding-bottom: .1rem;
+                        text-align: center;
+                        background: white;
+                        border-radius: .08rem;
+                        button {
+                            font-size: .3rem;
+                            &:first-child{
+                                border-bottom: .01rem solid #edeef0;
+                            }
+                            width: 100%;
+                            height: 1rem;
+                            background: transparent;
+                            border: 0;
+                        }
+                    }
+                    footer {
+                        background: white;
+                        margin-top: .1rem;
+                        border-radius: .08rem;
+                        button{
+                            font-size: .3rem;
+                            width: 100%;
+                            height: 1rem;
+                            background: transparent;
+                        }
+                    }
+                }
+            }
+            &.fade {
+                .modal-dialog {
+                    overflow: hidden;
+                }
             }
         }
     }
@@ -174,29 +371,36 @@ h6 {
                 animation: zoomOut .15s;
             }
             .modal-dialog {
-                width: 580px;
-                transform: none;
-                position: fixed;
                 top: 50%;
-                left: 50%;
-                margin-top: -25%;
-                margin-left: -290px;
+                transform: translateY(-50%);
                 box-sizing: border-box;
                 transition: all 0 ease 0;
                 .modal-content {
-                    font-size: 28px;
-                    padding: 20px;
-                    p {
-                        margin: 30px 0;
+                    footer {
+                        .container-fluid {
+                            padding: 0;
+                        }
+                        .list-inline {
+                            height: 100%;
+                            li {
+                                &:first-child {
+                                    border-right: 0.01rem solid #edeef0;
+                                }
+                                height: 100%;
+                                padding: 0;
+                                button {
+                                    width: 100%;
+                                    float: left;
+                                    height: 100%;
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
         &.in {
             opacity: inherit;
-            .modal-dialog {
-                transform: none;
-            }
         }
     }
 }
@@ -207,10 +411,6 @@ h6 {
             transition: opacity 0.15s linear;
         }
     }
-}
-
-body {
-    height: 100%;
 }
 
 .main-container {
@@ -241,26 +441,55 @@ body {
     position: absolute;
 }
 
-// 分享引导
-.share-hand,
-.browser-hand {
-    height: 100%;
-    .top {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        height: 50%;
-        background: url(./images/share_top.png) no-repeat;
+.btn {
+    display: inline-block;
+    border: none;
+    outline: none;
+    text-align: center;
+    background: none;
+}
+
+.modal-content {
+    .btn {
+        display: inline-block;
+        border: none;
+        outline: none;
+        text-align: center;
+        background: none;
     }
-    .bottom {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        height: 50%;
-        background: url(./images/share_bottom.png) no-repeat bottom;
+    .btn:focus,
+    .btn:active,
+    .btn:visited {
+        outline: none;
+        border: none;
+        box-shadow: none;
     }
 }
 
-.btn-lg {
-    font-size: 28px;
+.btn-default {
+    color: $fontNormalColor;
+    font-size: .28rem;
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.icon {
+    display: inline-block;
+    text-align: center;
+    vertical-align: sub;
+    fill: #fff;
+}
+
+.marTop-20 {
+    margin-top: 0.2rem;
+}
+
+.marTop-30 {
+    margin-top: 0.3rem;
 }

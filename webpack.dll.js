@@ -5,10 +5,10 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 module.exports = {
   entry: {
     angular: ['angular', 'angular-i18n/angular-locale_zh-cn', 'angular-sanitize'],
-    plugins: ['angular-animate', 'angular-ui-router', 'angular-ui-bootstrap', 'angular-touch', 'angular-iscroll', 'oclazyload', 'ng-bases'],
-    assets: [path.resolve(__dirname, 'src/assets/fonts/iconfont')],
-    styles: [path.resolve(__dirname, 'src/assets/styles/bootstrap')],
-    dev: ['angular-mocks']
+    plugins: ['angular-animate', 'angular-ui-router', path.resolve(__dirname, 'src/lib/angular-ui-bootstrap'),
+      'angular-touch', 'angular-iscroll', 'oclazyload', path.resolve(__dirname, 'src/assets/fonts/iconfont')
+    ],
+    styles: ['bootstrap-loader'],
   },
   output: {
     path: path.resolve(__dirname, 'dll/'),
@@ -46,12 +46,17 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
-          use: [
-            'css-loader',
-            'postcss-loader',
-            'sass-loader'
-          ]
+          loader: "style!css!sass?outputStyle=expanded&includePaths[]=" +
+            (path.resolve(__dirname, "./node_modules"))
         })
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        use: [
+          {
+            loader: 'file-loader?name=assets/fonts/[name].[ext]'
+          }
+        ]
       }
     ]
   }

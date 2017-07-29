@@ -1,8 +1,8 @@
-import * as angular from 'angular';
+import * as angular from "angular";
 require("!!style-loader!css-loader!sass-loader!./home.scss");
-import HomeController from './home.controller';
+import HomeController from "./home.controller";
 
 const homeModule = angular.module("home-module", []);
-homeModule.controller("homeController", HomeController)
+homeModule.controller("homeController", HomeController);
 
 export default homeModule;

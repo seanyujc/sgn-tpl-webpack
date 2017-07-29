@@ -11,10 +11,12 @@ import run from "./index.run";
 
 import ngb = require("ng-bases");
 
+require("angular-i18n/angular-locale_zh-cn");
+
 export let app = module("app", [
   require("angular-ui-router"),
   require("angular-animate"),
-  require("angular-ui-bootstrap"),
+  require("../lib/angular-ui-bootstrap"),
   require("angular-sanitize"),
   require("angular-touch"),
   require("angular-iscroll").name,
@@ -25,11 +27,9 @@ export let app = module("app", [
   routes.name,
 ]);
 
-console.log(components)
-
-function AppMainController($scope: ng.IScope, iScrollService) {
+AppMainController.$inject = ["$scope", "iScrollService"];
+function AppMainController($scope, iScrollService) {
   $scope.iScrollState = iScrollService.state;
 }
 
-AppMainController.$inject = ["$scope", "iScrollService"];
 app.config(siteConfig).config(apiConfig).run(run).controller("AppMainController", AppMainController);

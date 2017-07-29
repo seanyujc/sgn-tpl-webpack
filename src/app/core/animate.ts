@@ -1,10 +1,10 @@
-export default function(app: angular.IModule) {
+export default  (app: angular.IModule) => {
 
-  app.animation('.slide', ['$timeout', function($timeout: ng.ITimeoutService) {
+  app.animation(".slide", ["$timeout", ($timeout: ng.ITimeoutService) => {
     const times = .5;
     const animate: angular.animate.IAnimateCallbackObject = {
       enter: (element: JQuery, doneFunction: Function, options: angular.animate.IAnimationOptions) => {
-        if (!element.parent().hasClass('back')) {
+        if (!element.parent().hasClass("back")) {
           element.css({
             animation: `fadeInLeft ${times}s`,
           });
@@ -15,7 +15,7 @@ export default function(app: angular.IModule) {
         }
       },
       leave: (element: JQuery, doneFunction: Function, options: angular.animate.IAnimationOptions) => {
-        if (!element.parent().hasClass('back')) {
+        if (!element.parent().hasClass("back")) {
           element.css({
             animation: `fadeOutRight ${times}s`,
           });
@@ -31,4 +31,4 @@ export default function(app: angular.IModule) {
     };
     return animate;
   }]);
-}
+};

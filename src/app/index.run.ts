@@ -1,6 +1,6 @@
-import * as ngb from 'ng-bases';
-const run = function(serverConfig:ngb.IServerConfigProvider){
+import * as ngb from "ng-bases";
+const run = (serverConfig: ngb.IServerConfigProvider) => {
 
 };
-run.$inject =["serverConfig"];
+run.$inject = ["serverConfig"];
 export default run;

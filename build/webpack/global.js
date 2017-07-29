@@ -14,7 +14,7 @@ module.exports = function (_path) {
       app: _path + '/src/app/index.bootstrap'
     },
     output: {
-      filename: '[name]_[hash].js',
+      filename: 'js/[name]_[hash].js',
       path: path.resolve(_path, 'dist')
     },
     resolve: {
@@ -67,17 +67,11 @@ module.exports = function (_path) {
         manifest: require(_path + "/dll/plugins-manifest.json"),
       }),
       new ExtractTextPlugin('styles.css'),
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'commons',
-        filename: 'commons_[hash].js',
-        minChunks: 2,
-      }),
       new HtmlWebpackPlugin({
         filename: 'index.html',
         template: path.join(_path, 'src', 'index-tpl.html'),
-        dlls: ['dll/angular-dll', 'dll/plugins-dll', 'dll/assets-dll'],
-        styles: ['bootstrap'],
-        dev: ['dll/dev-dll']
+        dlls: ['dll/angular-dll', 'dll/plugins-dll'],
+        styles: ['bootstrap']
       }),
       new HappyPack({
         id: 'scss',

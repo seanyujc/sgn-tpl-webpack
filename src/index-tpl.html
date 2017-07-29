@@ -2,45 +2,46 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <meta name="viewport" content="width=device-width">
-    <% for(let o of htmlWebpackPlugin.options.styles){ %>
-    <link rel="stylesheet" href="./<%= o %>.css">
-    <% } %>
-    <script type="text/javascript">
-    (function (window) {
-        var viewport = window.document.querySelector("meta[name=viewport]");
-        var _devicePixelRatio = window.devicePixelRatio;
-        var scale = screen.width / 640;
-        var isIPhone = window.navigator.userAgent.match(/iPhone/gi);
-        var isAndroid = window.navigator.userAgent.match(/Android/gi);
-        if (isIPhone) {
-            viewport.setAttribute('content', 'width=device-width, initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=0');
-        } else {
-            viewport.setAttribute('content', 'width=device-width, initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=0');
-        }
-        window.document.documentElement.firstElementChild.appendChild(viewport);
-    })(window);
-    </script>
-    <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-    <% for(var o of htmlWebpackPlugin.options.dlls ){ %><script src="./<%= o %>.js"></script>
-    <% } %>
-    <% if(NODE_ENV==='DEV') {%>
-      <% for(let o of htmlWebpackPlugin.options.dev ){ %>
-      <script src="./<%= o %>.js"></script>
-      <% } %>
-    <% } %>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width">
+	<% for(let o of htmlWebpackPlugin.options.styles){ %>
+		<link rel="stylesheet" href="./<%= o %>.css">
+		<% } %>
+
 </head>
 
 <body ng-controller="AppMainController as app" ng-class="{
       'iscroll-on': app.iScrollState.useIScroll,
       'iscroll-off': !app.iScrollState.useIScroll
       }">
-      <div id="loading" class="loading" style="display: inline-block; height: 30px; line-height: 30px; position: fixed; left:0; right:0;  top: 50%;  margin-top: -15px;  text-align: center;">loading...</div>
-    <div class="main-container ">
-      <div ui-view></div>
-    </div>
+	<div id="loading" class="loading" style="display: inline-block; height: 30px; line-height: 30px; position: fixed; left:0; right:0;  top: 50%;  margin-top: -15px;  text-align: center;">loading...</div>
+	<div class="main-container ">
+		<div ui-view></div>
+	</div>
+	<script type="text/javascript">
+		(function (doc, win) {
+			var docEl = doc.documentElement,
+				resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+				recalc = function () {
+					var clientWidth = docEl.clientWidth;
+					if (!clientWidth) return;
+					if (clientWidth >= 750) {
+						docEl.style.fontSize = '100px';
+					} else {
+						docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+					}
+				};
+			if (!doc.addEventListener) return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+
+	</script>
+	<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	<% for(var o of htmlWebpackPlugin.options.dlls ){ %>
+		<script src="./<%= o %>.js"></script>
+		<% } %>
 </body>
 
 </html>
