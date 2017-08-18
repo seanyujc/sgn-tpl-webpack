@@ -1,4 +1,4 @@
-import * as ngb from "ng-bases";
+import * as ngb from "../../lib/ng-bases";
 
 declare var NODE_ENV: string;
 declare var PUBLIC_PATH: string;

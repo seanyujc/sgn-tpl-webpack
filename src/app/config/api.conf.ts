@@ -1,11 +1,11 @@
-import ngb = require("ng-bases");
+import ngb = require("../../lib/ng-bases");
 
 const apiConfig = (apiConfigProvider: ngb.IApiConfigProvider) => {
   apiConfigProvider.hosts = {
     apiUser: { dir: "/user/app" },
   };
   apiConfigProvider.get = {
-    fetchUserInfo: "apiUser:/user/info", //?openId
+    fetchUserInfo: "apiUser:/user/info", // ?openId
   };
 };
 apiConfig.$inject = ["apiConfigProvider"];

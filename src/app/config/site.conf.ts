@@ -1,5 +1,4 @@
-// import * as ngb from "ng-bases/dts";
-import ngb = require("ng-bases");
+import ngb = require("../../lib/ng-bases");
 import { Common } from "../core/common";
 
 const siteConfig = (serverConfigProvider: ngb.IServerConfigProvider) => {
@@ -14,8 +13,8 @@ const siteConfig = (serverConfigProvider: ngb.IServerConfigProvider) => {
   serverConfigProvider.env = Common.getEnv();
   serverConfigProvider.debug = false;
   serverConfigProvider.publicPath = Common.getPublicPath();
-  serverConfigProvider.wXJsSign = "/credit/app/wechat/jsapi"; //js权限验证对象获取路径
-  serverConfigProvider.wXOAuth = "/credit/app/wechat/auth_base"; //网页授权认证
+  serverConfigProvider.wXJsSign = "/credit/app/wechat/jsapi"; // js权限验证对象获取路径
+  serverConfigProvider.wXOAuth = "/credit/app/wechat/auth_base"; // 网页授权认证
 };
 siteConfig.$inject = ["serverConfigProvider"];
 

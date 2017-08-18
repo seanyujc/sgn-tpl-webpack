@@ -1,4 +1,4 @@
-import * as ngb from "ng-bases";
+import * as ngb from "../lib/ng-bases";
 const run = (serverConfig: ngb.IServerConfigProvider) => {
 
 };

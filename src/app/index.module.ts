@@ -9,7 +9,7 @@ import components from "./index.components";
 import routes from "./index.routes";
 import run from "./index.run";
 
-import ngb = require("ng-bases");
+import ngb = require("../lib/ng-bases");
 
 require("angular-i18n/angular-locale_zh-cn");
 

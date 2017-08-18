@@ -6,10 +6,11 @@ export interface IResolverServiceProvider extends ng.IServiceProvider {
   // 'home' CONFIG 0 END
 }
 
-export declare type Module = { name: string };
+export declare interface IModule { name: string; }
 
 export interface ILazyLoad extends oc.ILazyLoad {
-  load(module: Module | string | oc.ITypedModuleConfig | oc.IModuleConfig | Array<string | oc.ITypedModuleConfig | oc.IModuleConfig>,
+  load(
+    module: IModule | string | oc.ITypedModuleConfig | oc.IModuleConfig | Array<string | oc.ITypedModuleConfig | oc.IModuleConfig>,
     config?: oc.IOptionsConfig): ng.IPromise<any>;
 }
 
