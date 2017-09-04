@@ -5,8 +5,9 @@ export interface ICommon {
   showConfirm(msg: string): angular.ui.bootstrap.IModalServiceInstance;
   trim(str: string): string;
   showMsg(msg: string): angular.ui.bootstrap.IModalServiceInstance;
-  showPadUpward(html: string, controller?: string | Function | Array<string | Function>,
-    resolve?: { [key: string]: string | Function | Array<string | Function> | Object }): angular.ui.bootstrap.IModalServiceInstance;
+  showPadUpward(
+    html: string, controller?: string | Function | Array<string | Function>,
+    resolve?: { [key: string]: string | Function | Array<string | Function> | object }): angular.ui.bootstrap.IModalServiceInstance;
   validMobileByRegular(mobile: string): boolean;
   openShareHand(): angular.ui.bootstrap.IModalServiceInstance;
 }

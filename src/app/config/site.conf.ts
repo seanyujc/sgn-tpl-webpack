@@ -3,9 +3,9 @@ import { Common } from "../core/common";
 
 const siteConfig = (serverConfigProvider: ngb.IServerConfigProvider) => {
 
-  const dev: ngb.Site = { local: "dh5.duileme.cn", remote: "dapi.duileme.cn", appID: "xxx" };
-  const test: ngb.Site = { local: "th5.duileme.cn", remote: "tapi.duileme.cn", appID: "yyy" };
-  const pro: ngb.Site = { local: "h5.duileme.cn", remote: "api.duileme.cn", appID: "zzz" };
+  const dev: ngb.ISite = { local: "dh5.duileme.cn", remote: "dapi.duileme.cn", appID: "xxx" };
+  const test: ngb.ISite = { local: "th5.duileme.cn", remote: "tapi.duileme.cn", appID: "yyy" };
+  const pro: ngb.ISite = { local: "h5.duileme.cn", remote: "api.duileme.cn", appID: "zzz" };
 
   serverConfigProvider.sites[ngb.Env.DEV] = dev;
   serverConfigProvider.sites[ngb.Env.TEST] = test;
