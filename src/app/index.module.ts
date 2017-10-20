@@ -1,4 +1,5 @@
-import "../assets/styles/common.scss";
+import * as uiRooter from "@uirouter/angularjs";
+import "./styles/common.scss";
 
 import { module } from "angular";
 
@@ -11,10 +12,13 @@ import run from "./index.run";
 
 import ngb = require("../lib/ng-bases");
 
+// tslint:disable:no-submodule-imports
 require("angular-i18n/angular-locale_zh-cn");
+require("@uirouter/angularjs/release/stateEvents");
 
 export let app = module("app", [
-  require("angular-ui-router"),
+  uiRooter.default,
+  "ui.router.state.events",
   require("angular-animate"),
   require("../lib/angular-ui-bootstrap"),
   require("angular-sanitize"),

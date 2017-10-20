@@ -9,6 +9,7 @@ function routes(
   // 'home' CONFIG START
   $stateProvider.state("home", {
     url: "/home",
+    // tslint:disable-next-line:no-submodule-imports
     templateUrl: require("!!file-loader?name=templates/[name].[ext]!./pages/home/home.html"),
     controller: "homeController",
     resolve: {
