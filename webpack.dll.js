@@ -11,7 +11,7 @@ module.exports = {
     styles: ['bootstrap-loader'],
   },
   output: {
-    path: path.resolve(__dirname, 'dll/'),
+    path: path.resolve(__dirname, 'dll/dll/'),
     filename: '[name]-dll.js',
     library: '[name]_lib'
   },
@@ -29,7 +29,7 @@ module.exports = {
       name: 'angular',
       minChunks: 2,
     }),
-    new ExtractTextPlugin('bootstrap.css')
+    new ExtractTextPlugin('../styles/bootstrap.css')
   ],
   module: {
     rules: [{
@@ -54,7 +54,7 @@ module.exports = {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         use: [
           {
-            loader: 'file-loader?name=assets/fonts/[name].[ext]'
+            loader: 'file-loader?name=../assets/fonts/[name].[ext]'
           }
         ]
       }

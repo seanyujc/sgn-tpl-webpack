@@ -18,16 +18,16 @@ export default (app: ng.IModule) => {
   const resolverProvider: ng.IServiceProviderFactory = () => {
     // XBP-NM-PLF-NO-DELETE
     // 'home' CONFIG 1 START
-    const homePagePreloading = function ($q: ng.IQService, $ocLazyLoad: ILazyLoad) {
+    homePagePreloading.$inject = ["$q", "$ocLazyLoad"];
+    function homePagePreloading($q: ng.IQService, $ocLazyLoad: ILazyLoad) {
       const deferred = $q.defer();
-      require.ensure([], function (require) {
+      require.ensure([], (require) => {
         const homeModule = require<{ default }>("../../pages/home/home.module").default;
         $ocLazyLoad.load({ name: homeModule.name });
         deferred.resolve(homeModule.controller);
       });
       return deferred.promise;
-    };
-    homePagePreloading.$inject = ["$q", "$ocLazyLoad"];
+    }
     // 'home' CONFIG 1 END
 
     const self: IResolverServiceProvider = {
