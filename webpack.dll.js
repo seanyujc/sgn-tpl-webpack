@@ -5,7 +5,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 module.exports = {
   entry: {
     angular: ['angular', 'angular-i18n/angular-locale_zh-cn', 'angular-sanitize'],
-    plugins: ['angular-animate', 'angular-ui-router', path.resolve(__dirname, 'src/lib/angular-ui-bootstrap'),
+    plugins: ['angular-animate', '@uirouter/angularjs', path.resolve(__dirname, 'src/lib/angular-ui-bootstrap'),
       'angular-touch', 'angular-iscroll', 'oclazyload', path.resolve(__dirname, 'src/assets/fonts/iconfont')
     ],
     styles: ['bootstrap-loader'],

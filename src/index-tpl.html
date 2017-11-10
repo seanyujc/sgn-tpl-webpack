@@ -36,7 +36,10 @@
 			win.addEventListener(resizeEvt, recalc, false);
 			doc.addEventListener('DOMContentLoaded', recalc, false);
 		})(document, window);
-
+    <% if(htmlWebpackPlugin.options.siteInfo && htmlWebpackPlugin.options.NODE_ENV!=='DEV') {%>
+    window.CONFIG_SITE = "<%=htmlWebpackPlugin.options.siteInfo[htmlWebpackPlugin.options.NODE_ENV].local%>";
+    window.CONFIG_REMOTE = "<%=htmlWebpackPlugin.options.siteInfo[htmlWebpackPlugin.options.NODE_ENV].remote%>";
+    <% } %>
 	</script>
 	<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 	<% for(var o of htmlWebpackPlugin.options.dlls ){ %>

@@ -19,7 +19,8 @@ module.exports = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin(config.build.htmlWebpackPluginOption),
     new webpack.DefinePlugin({
       'NODE_ENV': JSON.stringify(NODE_ENV),
-      'PUBLIC_PATH': JSON.stringify(config.build.assetsPublicPath)
+      'PUBLIC_PATH': JSON.stringify(config.build.assetsPublicPath),
+      'SITE_INFO': JSON.stringify(config.build.siteInfo)
     })
   ]
 })
