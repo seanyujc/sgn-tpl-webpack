@@ -20,7 +20,7 @@
     "prebuild:dll": "rimraf dll",
     "build:dll": "webpack -p --config=webpack.dll.js",
     "postbuild:dll": "npm run cpdll",
-    "preinstall": "npm i cross-env ncp rimraf mkdirp typescript tslint eslint -g && npm run clean",
+    "preinstall": "npm config set msvs_version 2012 --global && npm i cross-env ncp rimraf mkdirp typescript tslint eslint -g && npm run clean",
     "postinstall": "npm run build:dll && npm run cpassets",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
